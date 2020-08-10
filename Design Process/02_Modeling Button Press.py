@@ -158,9 +158,9 @@ for i in range(25):
         board += 1 << i + 1
     if i % 5 != 0:
         board += 1 << i - 1
-    if i + 5 <= 24:  # Detect if on bottom row.
+    if i + 5 <= 24:
         board += 1 << i + 5
-    if i - 5 > 0:  # Detect if on top row.
+    if i - 5 > 0:
         board += 1 << i - 5
 
     masks.append(board)
