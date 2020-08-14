@@ -7,10 +7,11 @@ the XOR operator, ^, which when paired with an appropriate mask can perform the 
 """
 
 print(f'{bin(7)} XOR {bin(3)} == {bin(7 ^ 3)}')
+print()
 
 """
 To leverage XOR, we're going to need a series of masks to represent our button presses. Determining the central button 
-pressed is pretty simple. We'll start at 1, to represent the top left button, and move to 25, to represent the last
+pressed is pretty simple. We'll start at 0, to represent the top left button, and move to 24, to represent the last
 button.
 
 First, let's bring back our print_board function.
@@ -35,16 +36,16 @@ def print_board(board):
 
         if (i + 1) % 5 == 0:
             print()
-print()
+
 
 """
 Now, let's iterate over all the central presses of our button. By taking 1 and shifting the bit to the left the
 through 0-24, we'll get each button pressed.
 
-We'll only print the 8th button as a representation.
+We'll only print the Button 7 as a representation.
 """
 
-print('Lighting up the 8th button.')
+print('Lighting up Button 7.')
 for i in range(25):
     if i == 7:  # We are using 7 here, because the 8th bit is shifted 7 to the left of the 1st.
         print_board(1 << i)
@@ -55,7 +56,7 @@ Toggling the buttons to the left and right of the button pressed, at first, appe
 to the left and right of the one pressed.
 """
 
-print('Lighting up the 8th button & buttons to left & right.')
+print('Lighting up Button 7 & buttons to left & right.')
 for i in range(25):
     if i == 7:
         board = 0
@@ -67,10 +68,10 @@ for i in range(25):
 print()
 
 """
-But now we run into a problem. What if we press one of the edge buttons? Say, button 6.
+But now we run into a problem. What if we press one of the edge buttons? Say, Button 5.
 """
 
-print('Lighting up the 6th button & buttons to left & right.')
+print('Lighting up Button 5 & buttons to left & right.')
 for i in range(25):
     if i == 5:
         board = 0
@@ -82,7 +83,7 @@ for i in range(25):
 print()
 
 """
-Button 5, which is on the far right of the 1st row, lights up as well. That's not supposed to happen. We need a way
+Button 4, which is on the far right of the 1st row, lights up as well. That's not supposed to happen. We need a way
 to determine if an edge button is being pressed, and if so, to not toggle an incorrect light.
 
 Here, we can use the modulo operator to determine if a button is on the edge, and to disregard a light if appropriate.
@@ -108,7 +109,7 @@ Similar to left & right, above and below can be managed by shifting new bits 5 p
 the pattern we are looking for.
 """
 
-print('Lighting up the 8th button, with above, below, and both sides.')
+print('Lighting up Button 7, with above, below, and both sides.')
 for i in range(25):
     if i == 7:
         board = 0
@@ -128,7 +129,7 @@ We know we'll run into issues on the top and bottom edges, because of our experi
 go ahead and solve those issues now.
 """
 
-print('Lighting up the 3rd button correctly.')
+print('Lighting up Button 2 correctly.')
 for i in range(25):
     if i == 2:
         board = 0
@@ -165,9 +166,9 @@ for i in range(25):
 
     masks.append(board)
 
-mask_to_print = 17
-print(f'Printing mask for button {mask_to_print}.')
-print_board(masks[mask_to_print - 1])
+mask_to_print = 16
+print(f'Printing mask for Button {mask_to_print}.')
+print_board(masks[mask_to_print])
 print()
 
 """
@@ -179,4 +180,4 @@ print(f'Representation of {board_to_print}')
 print_board(board_to_print)
 print(f'Pressing button {mask_to_print}')
 print(f'Board after button press.')
-print_board(board_to_print ^ masks[mask_to_print - 1])
+print_board(board_to_print ^ masks[mask_to_print])

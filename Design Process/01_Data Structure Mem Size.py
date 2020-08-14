@@ -74,11 +74,11 @@ The answer is using integers. Since there are only two states of each light, we 
 With a light on represented by a 1, and a light off represented by a 0. We'll assign each light a spot in a binary
 digit based on the below.
 
-01 02 03 04 05
-06 07 08 09 10
-11 12 13 14 15
-16 17 18 19 20
-21 22 23 24 25
+00 01 02 03 04
+05 06 07 08 09
+10 11 12 13 14
+15 16 17 18 19
+20 21 22 23 24
 
 Using the above, the below board
 
