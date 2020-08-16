@@ -1,3 +1,6 @@
+# Solvable States too large for Github
+data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
